@@ -78,6 +78,18 @@
             border-radius: 0.5rem;
             color: #01579b;
         }
+        .code-block {
+            background-color: #f8fafc; /* slate-50 */
+            border: 1px solid #e2e8f0; /* slate-200 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #334155; /* slate-700 */
+        }
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
@@ -253,6 +265,118 @@
                 <p class="mt-2 text-sm">Después de guardar, GitHub Pages iniciará el proceso de despliegue. Esto puede tardar unos minutos.</p>
                 <p class="mt-2 text-sm">Actualiza la página "Pages" en "Settings". Cuando esté listo, verás un mensaje verde que indica: "Your site is live at https://donweb.com/es-int/". ¡Haz clic en esa URL para ver tu sitio web funcionando!</p>
                 <p class="mt-2 text-sm">Si no aparece de inmediato, ten paciencia y actualiza la página después de un par de minutos. A veces tarda un poco más.</p>
+            </div>
+        </section>
+
+        <section class="section-card border-l-8 border-orange-500">
+            <h2 class="text-3xl font-bold text-orange-700 mb-6 flex items-center">
+                <span class="mr-3">4. 🖼️</span> Configurar Favicon y Vista Previa para Redes Sociales
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">Para que tu sitio luzca profesional y se vea bien al compartirlo, añade un favicon (el pequeño icono en la pestaña del navegador) y configura las vistas previas para redes sociales como WhatsApp.</p>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Paso 4.1: Generar y Subir los Archivos Favicon</h3>
+            <div class="space-y-4">
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_1">
+                    <label for="step4_1_1" class="text-base text-gray-800 font-medium">
+                        Prepara una imagen PNG cuadrada de alta resolución (ej. 512x512 píxeles) que quieras usar como favicon.
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_2">
+                    <label for="step4_1_2" class="text-base text-gray-800 font-medium">
+                        Ve a un sitio web para convertir PNG a ICO (no puedo proporcionar el link directo, pero puedes buscar "PNG to ICO converter" en Google).
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_3">
+                    <label for="step4_1_3" class="text-base text-gray-800 font-medium">
+                        Arrastra y suelta tu archivo PNG en el convertidor web.
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_4">
+                    <label for="step4_1_4" class="text-base text-gray-800 font-medium">
+                        Oprime el botón "Download" (Descargar) o similar para descargar un archivo ZIP (usualmente llamado `favicon_io.zip`).
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_5">
+                    <label for="step4_1_5" class="text-base text-gray-800 font-medium">
+                        Descomprime el archivo `favicon_io.zip` en tu computadora. Verás una carpeta con varios archivos de favicon.
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_6">
+                    <label for="step4_1_6" class="text-base text-gray-800 font-medium">
+                        En la raíz de tu repositorio de GitHub, crea una nueva carpeta llamada `favicon_io`.
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_1_7">
+                    <label for="step4_1_7" class="text-base text-gray-800 font-medium">
+                        Sube todos los archivos que estaban dentro del ZIP descomprimido a la carpeta `favicon_io` que acabas de crear en tu repositorio. Haz "commit" de los cambios.
+                    </label>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Paso 4.2: Añadir las Etiquetas al HTML (en tu `index.html`)</h3>
+            <p class="text-lg text-gray-700 mb-6">Ahora, necesitas decirle a tu página HTML dónde encontrar estos favicons y qué información mostrar en las redes sociales. Copia y pega el siguiente código dentro de la sección <code class="bg-gray-200 p-1 rounded text-sm">&lt;head&gt;</code> de tu archivo <code class="bg-gray-200 p-1 rounded text-sm">index.html</code>. ¡Recuerda reemplazar los marcadores con tu información!</p>
+
+            <div class="code-block">
+                &lt;!-- Favicons para diferentes dispositivos y navegadores --&gt;<br>
+                &lt;link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png"&gt;<br>
+                &lt;link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png"&gt;<br>
+                &lt;link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png"&gt;<br>
+                &lt;link rel="manifest" href="favicon_io/site.webmanifest"&gt;<br>
+                <br>
+                &lt;!-- Open Graph (para redes sociales como WhatsApp, Facebook, LinkedIn) --&gt;<br>
+                &lt;meta property="og:title" content="[PONER TITULO DEL REPOSITORIO]"&gt;<br>
+                &lt;meta property="og:description" content="[PONER DESCRIPCION DEL REPOSITORIO]"&gt;<br>
+                &lt;meta property="og:image" content="https://expandedigital.github.io/[REEMPLAZAR-CON-NOMBRE-DEL-REPOSITORIO]/favicon_io/apple-touch-icon.png"&gt;<br>
+                &lt;meta property="og:url" content="https://expandedigital.github.io/[REEMPLAZAR-CON-NOMBRE-DEL-REPOSITORIO]/"&gt;<br>
+                &lt;meta property="og:type" content="website"&gt;<br>
+                <br>
+                &lt;!-- Etiquetas específicas para Twitter --&gt;<br>
+                &lt;meta name="twitter:card" content="summary_large_image"&gt;<br>
+                &lt;meta name="twitter:image:alt" content="Icono de [REEMPLAZAR-CON-NOMBRE-DEL-REPOSITORIO]"&gt;
+            </div>
+
+            <div class="space-y-4 mt-6">
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_2_1">
+                    <label for="step4_2_1" class="text-base text-gray-800 font-medium">
+                        Abre tu archivo `index.html` en GitHub (haz clic en él, luego en el ícono del lápiz para editar).
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_2_2">
+                    <label for="step4_2_2" class="text-base text-gray-800 font-medium">
+                        Copia todo el bloque de código de arriba y pégalo dentro de la sección `<head>` de tu `index.html`. Asegúrate de que quede entre las etiquetas `<head>` y `</head>`.
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_2_3">
+                    <label for="step4_2_3" class="text-base text-gray-800 font-medium">
+                        **¡MUY IMPORTANTE! Reemplaza los marcadores:**
+                        <ul class="list-disc list-inside ml-6 text-sm text-gray-600 mt-2">
+                            <li>`[PONER TITULO DEL REPOSITORIO]` por el título real de tu sitio.</li>
+                            <li>`[PONER DESCRIPCION DEL REPOSITORIO]` por una descripción breve y atractiva.</li>
+                            <li>`[REEMPLAZAR-CON-NOMBRE-DEL-REPOSITORIO]` por el nombre *exacto* de tu repositorio (ej. `nido-digital-teck`). ¡Haz esto en ambas URLs y en la descripción de Twitter!</li>
+                        </ul>
+                    </label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4_2_4">
+                    <label for="step4_2_4" class="text-base text-gray-800 font-medium">
+                        Haz "commit" de los cambios en tu `index.html`.
+                    </label>
+                </div>
+            </div>
+            <div class="tip">
+                <strong>✨ ¡Probando la Vista Previa!</strong>
+                <p class="mt-2 text-sm">Después de hacer commit, dale unos minutos a GitHub Pages para que actualice los cambios.</p>
+                <p class="mt-2 text-sm">Para probar la vista previa, copia la URL de tu GitHub Page y pégala en un chat de WhatsApp (no la envíes aún) o en el <a href="https://developers.facebook.com/tools/debug/" target="_blank" class="text-blue-600 hover:underline">Depurador de Contenido Compartido de Facebook</a>. Deberías ver la imagen y el texto que definiste.</p>
             </div>
         </section>
 
